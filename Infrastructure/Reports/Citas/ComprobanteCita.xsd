@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSet1" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Detalle_Cita" msprop:Generator_RowClassName="Detalle_CitaRow" msprop:Generator_RowEvHandlerName="Detalle_CitaRowChangeEventHandler" msprop:Generator_RowDeletedName="Detalle_CitaRowDeleted" msprop:Generator_RowDeletingName="Detalle_CitaRowDeleting" msprop:Generator_RowEvArgName="Detalle_CitaRowChangeEvent" msprop:Generator_TablePropName="Detalle_Cita" msprop:Generator_RowChangedName="Detalle_CitaRowChanged" msprop:Generator_UserTableName="Detalle_Cita" msprop:Generator_RowChangingName="Detalle_CitaRowChanging" msprop:Generator_TableClassName="Detalle_CitaDataTable" msprop:Generator_TableVarName="tableDetalle_Cita">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Titulo" msprop:Generator_UserColumnName="Titulo" msprop:Generator_ColumnPropNameInTable="TituloColumn" msprop:Generator_ColumnPropNameInRow="Titulo" msprop:Generator_ColumnVarNameInTable="columnTitulo" type="xs:string" minOccurs="0" />
+              <xs:element name="Tema" msprop:Generator_UserColumnName="Tema" msprop:Generator_ColumnPropNameInTable="TemaColumn" msprop:Generator_ColumnPropNameInRow="Tema" msprop:Generator_ColumnVarNameInTable="columnTema" type="xs:string" minOccurs="0" />
+              <xs:element name="Subtema" msprop:Generator_UserColumnName="Subtema" msprop:Generator_ColumnPropNameInTable="SubtemaColumn" msprop:Generator_ColumnPropNameInRow="Subtema" msprop:Generator_ColumnVarNameInTable="columnSubtema" type="xs:string" minOccurs="0" />
+              <xs:element name="Nombre_Solicitante" msprop:Generator_UserColumnName="Nombre_Solicitante" msprop:Generator_ColumnPropNameInTable="Nombre_SolicitanteColumn" msprop:Generator_ColumnPropNameInRow="Nombre_Solicitante" msprop:Generator_ColumnVarNameInTable="columnNombre_Solicitante" type="xs:string" minOccurs="0" />
+              <xs:element name="Correo_Electronico" msprop:Generator_UserColumnName="Correo_Electronico" msprop:Generator_ColumnPropNameInTable="Correo_ElectronicoColumn" msprop:Generator_ColumnPropNameInRow="Correo_Electronico" msprop:Generator_ColumnVarNameInTable="columnCorreo_Electronico" type="xs:string" minOccurs="0" />
+              <xs:element name="Fecha_Cita" msprop:Generator_UserColumnName="Fecha_Cita" msprop:Generator_ColumnPropNameInTable="Fecha_CitaColumn" msprop:Generator_ColumnPropNameInRow="Fecha_Cita" msprop:Generator_ColumnVarNameInTable="columnFecha_Cita" type="xs:string" minOccurs="0" />
+              <xs:element name="Hora_Cita" msprop:Generator_UserColumnName="Hora_Cita" msprop:Generator_ColumnPropNameInTable="Hora_CitaColumn" msprop:Generator_ColumnPropNameInRow="Hora_Cita" msprop:Generator_ColumnVarNameInTable="columnHora_Cita" type="xs:string" minOccurs="0" />
+              <xs:element name="Clave_Cita" msprop:Generator_UserColumnName="Clave_Cita" msprop:Generator_ColumnPropNameInTable="Clave_CitaColumn" msprop:Generator_ColumnPropNameInRow="Clave_Cita" msprop:Generator_ColumnVarNameInTable="columnClave_Cita" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
