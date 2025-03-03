@@ -19,7 +19,6 @@ namespace Infrastructure.Services.StoredProcedure
             _uow = uow;
         }
         public bool Execute(string sp, params object[] parameters)
-
         {
             try
             {
