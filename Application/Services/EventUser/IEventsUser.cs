@@ -17,5 +17,7 @@ namespace Application.Services.EventUser
         Response<EventSeriadoDTO> GetEventSeriado(int Id);
         Response<bool> UpdateEventSeriado(EventSeriadoDTO evento);
         Response<List<UserDTO>> GetEmpleados();
+        Response<List<UserPeriodoDTO>> GetEmpleadoPeriodo(int Id);
+        Response<List<InhabilesDTO>> GetInhabiles();
     }
 }

@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Models.EventUser
 {
-    public class UserCalendar
+    public class UserPeriodo
     {
+        public int Id { get; set; }
         public int Id_Empleado { get; set; }
         public string Nombre { get; set; }
-        public DateTime? Fecha_Ingreso { get; set; }
-        public string Dias { get; set; }
-        public int Years { get; set; }
-        public int DiasDisponibles { get; set; }
-
+        public DateTime Fecha { get; set; }
     }
 }

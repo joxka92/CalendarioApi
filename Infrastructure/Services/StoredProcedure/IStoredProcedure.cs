@@ -11,6 +11,7 @@ namespace Infrastructure.Services.StoredProcedure
         IEnumerable<T> GetCollection<T>(string sp, params object[] parameters) where T : class;
         T GetSingleElement<T>(string sp, params object[] parameters) where T : class;
         bool Execute(string sp, params object[] parameters);
+        int ExecuteOut(string sp, string Salida, params object[] parameters);
         bool ExecuteImage(string sp, params object[] parameters);
     }
 }

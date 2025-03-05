@@ -33,9 +33,7 @@ namespace Application.Profiles
               .ForMember(u => u.Id_Usuario, o => o.MapFrom(z => z.Id_Empleado)).ForMember(u => u.Id_Usuario, o => o.MapFrom(z => z.Id_Empleado))
                             .ForMember(u => u.Nombre_Completo, o => o.MapFrom(z => z.Nombre));
 
-
-
-
+            CreateMap<Inhabil, InhabilesDTO>();
 
         }
 

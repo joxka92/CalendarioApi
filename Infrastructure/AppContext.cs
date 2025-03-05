@@ -28,10 +28,8 @@ namespace Infrastructure
 
             modelBuilder.ApplyConfiguration(new EventSeriadoSpConfig());
             modelBuilder.ApplyConfiguration(new UsuariosSpConfig());
-
-
-
-
+            modelBuilder.ApplyConfiguration(new UsuariosPeriodoSpConfig());
+            modelBuilder.ApplyConfiguration(new InhabilesSpConfig());
 
 
             base.OnModelCreating(modelBuilder);

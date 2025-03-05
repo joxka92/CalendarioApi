@@ -34,4 +34,21 @@ namespace Infrastructure.ContextConfigurations.Stores
             builder.HasNoKey();
         }
     }
+
+
+    public class UsuariosPeriodoSpConfig : IEntityTypeConfiguration<UserPeriodo>
+    {
+        public void Configure(EntityTypeBuilder<UserPeriodo> builder)
+        {
+            builder.HasNoKey();
+        }
+    }
+
+    public class InhabilesSpConfig : IEntityTypeConfiguration<Inhabil>
+    {
+        public void Configure(EntityTypeBuilder<Inhabil> builder)
+        {
+            builder.HasNoKey();
+        }
+    }
 }

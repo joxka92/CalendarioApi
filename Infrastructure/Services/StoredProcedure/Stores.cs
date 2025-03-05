@@ -37,7 +37,9 @@ namespace Infrastructure.Services.StoredProcedure
             SP_UPDATE_NOTIFICACION_CALENDARIO_CITAS = 25,
             SP_VALIDATE_INSERT_EVENT = 26,
             SP_GET_CITAS_ASESOR = 27,
-            SP_VALIDATE_UPDATE_EVENT = 28
+            SP_VALIDATE_UPDATE_EVENT = 28,
+            SP_GET_PERIODOS_USER = 29,
+            SP_GET_INHABILES = 30
 
 
         }

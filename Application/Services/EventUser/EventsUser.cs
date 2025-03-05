@@ -16,6 +16,7 @@ using Infrastructure.Support;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Graph.Models.TermStore;
 using Microsoft.IdentityModel.Tokens;
+using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using static Infrastructure.Services.StoredProcedure.Stores;
 
@@ -47,22 +48,24 @@ namespace Application.Services.EventUser
         {
             return _executor.SafeExecutor(() =>
             {
-
-
-                var result = _storedProcedure.Execute(
-                 Enum.GetName(typeof(Stores_Names), Stores_Names.SP_VALIDATE_INSERT_EVENT),
+                var result = _storedProcedure.ExecuteOut(
+                 Enum.GetName(typeof(Stores_Names), Stores_Names.SP_VALIDATE_INSERT_EVENT) ,"YEAR",
                 $"'{Request.Inicio:yyyy-MM-dd}'", $"'{Request.Fin:yyyy-MM-dd}'", Request.Id_Usuario);
+
+                List<InhabilesDTO> Inhabiles = GetInhabiles();
 
                 while (Request.Inicio <= Request.Fin)
                 {
+                    if (!Inhabiles.Any(u => u.Fecha.ToShortDateString() == Request.Inicio.ToShortDateString()))
+                    {
+                        var obj = new IEventUserDTO(Request, Request.Inicio);
 
-                    var obj = new IEventUserDTO(Request, Request.Inicio);
-
-                    Domain.Models.EventUser.EventUser eventUser = _mapper.Map<Domain.Models.EventUser.EventUser>(obj);
-                    eventUser.Id_Usuario_Creacion = 0;
-                    eventUser.Fecha_Creacion = DateTime.Now;
-                    eventUser.Activo = true;
-                    _unitOfWork.Add(eventUser);
+                        Domain.Models.EventUser.EventUser eventUser = _mapper.Map<Domain.Models.EventUser.EventUser>(obj);
+                        eventUser.Fecha_Creacion = DateTime.Now;
+                        eventUser.Activo = true;
+                        eventUser.Year = result;
+                        _unitOfWork.Add(eventUser);
+                    }
                     Request.Inicio = Request.Inicio.AddDays(1);
                 }
 
@@ -185,6 +188,69 @@ namespace Application.Services.EventUser
                 return list;
             });
         }
+
+
+
+        public Response<List<UserPeriodoDTO>> GetEmpleadoPeriodo(int Id)
+        {
+            return _executor.SafeExecutor(() =>
+            {
+
+                List<UserPeriodoDTO> List = new();
+                var result = _storedProcedure.GetCollection<UserPeriodo>(
+                    Enum.GetName(typeof(Stores_Names), Stores_Names.SP_GET_PERIODOS_USER),
+                    Id);
+
+                var listPivot = result.ToList();
+                for (int i = 0; i < listPivot.Count;)
+                {
+
+                    UserPeriodoDTO item = new UserPeriodoDTO() { Inicio = listPivot[i].Fecha };
+                    DateTime fechaPivot = item.Inicio;
+                    bool continueDate = true;
+                    while(continueDate)
+                    {
+                        if(i < listPivot.Count-1)
+                            i++;
+                        else
+                        {
+                            continueDate = false;
+                            item.Fin = fechaPivot;
+                            List.Add(item);
+                            i++;
+                            break;
+                        }
+                        if (fechaPivot.AddDays(1) != listPivot[i].Fecha)
+                        {
+                            continueDate = false;
+                            item.Fin = fechaPivot;
+                            List.Add(item);
+                        }
+                        else
+                        {
+                            fechaPivot = fechaPivot.AddDays(1);
+                        }
+                    }
+                }
+
+                return List;
+            });
+        }
+
+
+        public Response<List<InhabilesDTO>> GetInhabiles()
+        {
+            return _executor.SafeExecutor(() =>
+            {
+
+                List<InhabilesDTO> List = new();
+                var result = _storedProcedure.GetCollection<Inhabil>(
+                    Enum.GetName(typeof(Stores_Names), Stores_Names.SP_GET_INHABILES));
+                List = _mapper.Map<List<InhabilesDTO>>(result);
+                return List;
+            });
+        }
+
 
     }
 }

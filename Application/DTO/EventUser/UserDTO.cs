@@ -12,5 +12,7 @@ namespace Application.DTO.EventUser
         public string Nombre_Completo { get; set; }
         public DateTime? Fecha_Ingreso { get; set; }
         public string Dias { get; set; }
+        public int Years { get; set; }
+        public int DiasDisponibles { get; set; }
     }
 }

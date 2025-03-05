@@ -89,6 +89,19 @@ namespace Api_Appointments.Controllers
             return Ok(_event.GetEmpleados());
         }
 
+        [HttpPost]
+        [Route("GetPeriodosUser")]
+        public IActionResult GetPeriodos([FromBody] int Id)
+        {
+            return Ok(_event.GetEmpleadoPeriodo(Id));
+        }
+
+        [HttpGet]
+        [Route("GetInhabiles")]
+        public IActionResult GetInhabiles()
+        {
+            return Ok(_event.GetInhabiles());
+        }
 
     }
 }

@@ -32,6 +32,33 @@ namespace Infrastructure.Services.StoredProcedure
             }
         }
 
+        public int ExecuteOut(string sp, string Salida, params object[] parameters )
+        {
+            try
+            {
+                var cantidadParam = new SqlParameter
+                {
+                    ParameterName = $"@{Salida}",
+                    SqlDbType = System.Data.SqlDbType.Int,
+                    Direction = System.Data.ParameterDirection.Output
+                };
+                string cmd = $"{sp} {string.Join(",", parameters.Select(item => item ?? "null"))} , @{Salida} OUTPUT";
+                int rowsAffected = _uow.Context.Database.ExecuteSqlRaw(cmd , cantidadParam);
+
+                int cantidad = (int)cantidadParam.Value;
+
+                return cantidad;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+   
+
+
+
         public bool ExecuteImage(string sp, params object[] parameters)
 
         {
